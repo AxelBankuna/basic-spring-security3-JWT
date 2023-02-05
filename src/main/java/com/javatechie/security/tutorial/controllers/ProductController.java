@@ -1,6 +1,7 @@
 package com.javatechie.security.tutorial.controllers;
 
 import com.javatechie.security.tutorial.config.dto.AuthRequest;
+import com.javatechie.security.tutorial.config.service.JwtService;
 import com.javatechie.security.tutorial.models.Product;
 import com.javatechie.security.tutorial.services.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -31,10 +32,5 @@ public class ProductController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public Product getProductById(@PathVariable("id") int id) {
         return this.productService.getProduct(id);
-    }
-
-    @PostMapping("/authenticate")
-    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
-
     }
 }
